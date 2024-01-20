@@ -4,7 +4,7 @@ https://master--laurelfixhealthassignment.netlify.app/
 
 ## How to run the Project
 
-1. go to base directy
+1. Go to base directy
 2. npm i
 3. npm start
 
