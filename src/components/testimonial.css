@@ -1,0 +1,18 @@
+.testimonial-slider {
+  /* margin-top: 70px; */
+  padding: 0 0 50px 0 !important;
+}
+
+.prev-next-button {
+  font-size: 30px;
+  color: white;
+  padding: 0 20px;
+}
+
+.overflow-wrap {
+  white-space: nowrap;
+  overflow: hidden;
+  overflow-wrap: break-word;
+  text-overflow: ellipsis;
+  height: 100px;
+}

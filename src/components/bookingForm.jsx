@@ -140,44 +140,67 @@ const BookingForm = () => {
   const [doctorlist, setDoctorlist] = useState([]);
 
   const ValidateNext = () => {
-    if (number === 0 && formData.name.length !== 0 && formData.phonenumber.length !== 0) {
-      setNumber((prev) => prev + 1);
-    } else if (number === 0) {
-      alert("Kindly fill all the Details : ");
+    if (number === 0) {
+      if (formData.name.length === 0) {
+        alert("Enter name");
+      } else if (formData.phonenumber.length === 0) {
+        alert("Enter phoneNumber");
+      } else if (isNaN(formData.phonenumber) || formData.phonenumber.length !== 10) {
+        alert("Enter valid phoneNumber");
+      } else if (formData.name.length !== 0 && formData.phonenumber.length !== 0) {
+        setNumber((prev) => prev + 1);
+      } else {
+        alert("Kindly fill all the Details : ");
+      }
     }
 
-    if (
-      number === 1 &&
-      formData.age.length !== 0 &&
-      formData.city.length !== 0 &&
-      formData.company.length !== 0
-    ) {
-      setNumber((prev) => prev + 1);
-    } else if (number === 1) {
-      alert("Kindly fill all the Details : ");
+    if (number === 1) {
+      if (formData.age.length === 0) {
+        alert("Enter age");
+      } else if (formData.city.length === 0) {
+        alert("Enter City");
+      } else if (formData.company.length === 0) {
+        alert("Enter Comapny");
+      } else if (
+        formData.age.length !== 0 &&
+        formData.city.length !== 0 &&
+        formData.company.length !== 0
+      ) {
+        setNumber((prev) => prev + 1);
+      } else {
+        alert("Kindly fill the Details : ");
+      }
     }
 
-    if (
-      number === 2 &&
-      formData.cheifComplaints.length !== 0 &&
-      parseInt(formData.age) >= 40 &&
-      formData.prevexp.length !== 0
-    ) {
-      setNumber((prev) => prev + 1);
-    } else if (
-      number === 2 &&
-      formData.cheifComplaints.length !== 0 &&
-      parseInt(formData.age) < 40
-    ) {
-      setNumber((prev) => prev + 1);
-    } else if (number === 2) {
-      alert("Kindly fill all the Details : ");
+    if (number === 2) {
+      console.log("print : ", formData.prevexp, formData.age, formData.prevexp.toLowerCase());
+      if (formData.cheifComplaints.length === 0) {
+        alert("Enter cheifComplaint ");
+      } else if (parseInt(formData.age) >= 40 && formData.prevexp.length === 0) {
+        alert("Enter Previous experience with Physiotherapy");
+      } else if (parseInt(formData.age) >= 40) {
+        if (formData.prevexp.toLowerCase() === "yes" || formData.prevexp.toLowerCase() === "no") {
+          setNumber((prev) => prev + 1);
+        } else {
+          alert("Enter Yes or No Previous experience with Physiotherapy");
+        }
+      } else if (formData.cheifComplaints.length !== 0 && parseInt(formData.age) < 40) {
+        setNumber((prev) => prev + 1);
+      } else if (
+        formData.cheifComplaints.length !== 0 &&
+        parseInt(formData.age) >= 40 &&
+        formData.prevexp.length !== 0
+      ) {
+        setNumber((prev) => prev + 1);
+      } else {
+        alert("Kindly fill all the Details : ");
+      }
     }
   };
 
   const handleSubmit = () => {
     if (number === 3 && formData.doctor.length !== 0) {
-      alert("Your data has been Submitted ");
+      alert("Your Data has been Submitted ");
       setNumber(0);
       setFormData({
         name: "",
@@ -190,7 +213,7 @@ const BookingForm = () => {
         doctor: "",
       });
     } else {
-      alert("Please select a City ");
+      alert("Please select a Doctor ");
     }
   };
 
@@ -200,7 +223,7 @@ const BookingForm = () => {
 
   useEffect(() => {
     let doctors = mockDoctors.filter(
-      (doctor) => doctor.city.toLocaleLowerCase() === formData.city.toLowerCase()
+      (doctor) => doctor.city.toLowerCase() === formData.city.toLowerCase()
     );
     setDoctorlist(doctors);
   }, [formData.city]);
@@ -246,7 +269,7 @@ const BookingForm = () => {
                     value={formData.phonenumber}
                     onChange={handleChange}
                     className="w-full -ml-10 pl-4 pr-3 py-2 rounded-lg border-2 border-gray-200 outline-none focus:border-indigo-500"
-                    placeholder="1234567890"
+                    placeholder="9412328868"
                     required
                   />
                 </div>
@@ -301,7 +324,7 @@ const BookingForm = () => {
                   <input
                     type="text"
                     className="w-full -ml-10 pl-4 pr-3 py-2 rounded-lg border-2 border-gray-200 outline-none focus:border-indigo-500"
-                    placeholder="Dehradun"
+                    placeholder="Miami , chicago"
                     name="city"
                     value={formData.city}
                     onChange={handleChange}
@@ -436,7 +459,9 @@ const BookingForm = () => {
                         <option value={""}>Select a Doctor</option>
                         {doctorlist.map((option, index) => (
                           <option key={index} value={option.name}>
-                            {option.name}
+                            <>
+                              <h5>{option.name} </h5>(<h6>{option.expertise}</h6>)
+                            </>
                           </option>
                         ))}
                       </select>
