@@ -204,7 +204,7 @@ const BookingForm = () => {
                   <input
                     type="text"
                     className="w-full -ml-10 pl-4 pr-3 py-2 rounded-lg border-2 border-gray-200 outline-none focus:border-indigo-500"
-                    placeholder="Miami , chicago"
+                    placeholder="Delhi, Mumbai"
                     name="city"
                     value={formData.city}
                     onChange={handleChange}
