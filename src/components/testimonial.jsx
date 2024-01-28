@@ -61,7 +61,7 @@ const testimonial = () => {
             spaceBetween={50}
             slidesPerView={3}
             pagination={{ clickable: true }}
-            onSwiper={(swiper) => console.log(swiper)}
+            onSwiper={(swiper) => {}}
             navigation={{
               nextEl: ".review-swiper-button-next",
               prevEl: ".review-swiper-button-prev",
