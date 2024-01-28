@@ -358,7 +358,7 @@ const BookingForm = () => {
                   <>
                     <h6 className="text-center font-bold">OOPS !!! </h6>
                     <h6 className="text-center">
-                      No Doctor in your City, please Choice any other City.
+                      No Doctor in your City, please Choosee any other City.
                     </h6>
                   </>
                 )}
