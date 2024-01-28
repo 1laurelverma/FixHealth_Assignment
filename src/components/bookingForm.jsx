@@ -54,7 +54,7 @@ const BookingForm = () => {
     }
 
     if (number === 2) {
-      console.log("print : ", formData.prevexp, formData.age, formData.prevexp.toLowerCase());
+      // console.log("print : ", formData.prevexp, formData.age, formData.prevexp.toLowerCase());
       if (formData.cheifComplaints.length === 0) {
         alert("Enter cheifComplaint ");
       } else if (parseInt(formData.age) >= 40 && formData.prevexp.length === 0) {
