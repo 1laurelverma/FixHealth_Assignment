@@ -85,7 +85,7 @@ const testimonial = () => {
             {Reviews.map((review, index) => {
               return (
                 <>
-                  <SwiperSlide>
+                  <SwiperSlide key={index}>
                     <blockquote
                       className="rounded-lg bg-gray-100 h-full p-6 shadow-sm sm:p-8 "
                       key={index}

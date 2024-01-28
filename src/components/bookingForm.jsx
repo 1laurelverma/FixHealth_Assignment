@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from "react";
-import mockData from "./mockData";
+// import axios from "axios";
+// import mockData from "./mockData";
 import "./bookingForm.css";
 
 const BookingForm = () => {
-  const mockDoctors = mockData.doctors;
+  // const mockDoctors = mockData.doctors;
 
   const [formData, setFormData] = useState({
     name: "",
@@ -40,7 +41,7 @@ const BookingForm = () => {
       } else if (formData.city.length === 0) {
         alert("Enter City");
       } else if (formData.company.length === 0) {
-        alert("Enter Comapny");
+        alert("Enter Company");
       } else if (
         formData.age.length !== 0 &&
         formData.city.length !== 0 &&
@@ -102,10 +103,16 @@ const BookingForm = () => {
   };
 
   useEffect(() => {
-    let doctors = mockDoctors.filter(
-      (doctor) => doctor.city.toLowerCase() === formData.city.toLowerCase()
-    );
-    setDoctorlist(doctors);
+    const loadData = async () => {
+      const citySelected = formData.city.toLowerCase();
+      let response = await fetch(
+        `https://doctors-mock-api.onrender.com/api/doctors/${citySelected}`
+      );
+      const data = await response.json();
+      // console.log("data", data);
+      setDoctorlist(data);
+    };
+    loadData();
   }, [formData.city]);
 
   const conditionalComponent = () => {
@@ -338,9 +345,9 @@ const BookingForm = () => {
                       >
                         <option value={""}>Select a Doctor</option>
                         {doctorlist.map((option, index) => (
-                          <option key={index} value={option.name}>
+                          <option key={index} value={option.full_name}>
                             <>
-                              <h5>{option.name} </h5>(<h6>{option.expertise}</h6>)
+                              <h5>{option.full_name} </h5>(<h6>{option.occupation}</h6>)
                             </>
                           </option>
                         ))}
