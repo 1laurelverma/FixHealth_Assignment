@@ -12,23 +12,23 @@ https://master--laurelfixhealthassignment.netlify.app/
 ## Test Cases : 
 
 {
-name: Laurel verma
-phone number : 9876567899
-age: 22
-city: miami
-company: fixhealth
-cheifComplaint: having back issue
+name: Laurel verma ,
+phone number : 9876567899 , 
+age: 22 , 
+city: miami , 
+company: fixhealth , 
+cheifComplaint: having back issue , 
 doctor: select from dropdown
 }
 
 {
-name: test user 2
-phone number : 9876567899
-age: 41
-city: dehradun
-company: fixhealth
-cheifComplaint: having back issue
-previousExperience: no
+name: test user 2 , 
+phone number : 9876567899 , 
+age: 41 , 
+city: dehradun , 
+company: fixhealth , 
+cheifComplaint: having back issue , 
+previousExperience: no , 
 doctor: no available doctor
 }
 
