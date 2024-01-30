@@ -84,6 +84,7 @@ const BookingForm = () => {
   const handleSubmit = () => {
     if (number === 3 && formData.doctor.length !== 0) {
       alert("Your Data has been Submitted ");
+      console.log(formData);
       setNumber(0);
       setFormData({
         name: "",
