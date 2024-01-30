@@ -48,6 +48,7 @@ const BookingForm = () => {
         formData.city.length !== 0 &&
         formData.company.length !== 0
       ) {
+        loadData();
         setNumber((prev) => prev + 1);
       } else {
         alert("Kindly fill the Details : ");
@@ -103,22 +104,21 @@ const BookingForm = () => {
     setFormData({ ...formData, [event.target.name]: event.target.value });
   };
 
-  useEffect(() => {
-    const loadData = async () => {
-      const citySelected = formData.city.toLowerCase();
-      setIsLoading(true);
-      let response = await fetch(
-        `https://doctors-mock-api.onrender.com/api/doctors/${citySelected}`
-      );
-      const data = await response.json();
-      // console.log("data", data);
-      setDoctorlist(data);
-      // setTimeout(() => {
-      setIsLoading(false);
-      // }, 20000);
-    };
-    loadData();
-  }, [formData.city]);
+  const loadData = async () => {
+    const citySelected = formData.city.toLowerCase();
+    setIsLoading(true);
+    let response = await fetch(`https://doctors-mock-api.onrender.com/api/doctors/${citySelected}`);
+    const data = await response.json();
+    // console.log("data", data);
+    setDoctorlist(data);
+    // setTimeout(() => {
+    setIsLoading(false);
+    // }, 20000);
+  };
+
+  // useEffect(() => {
+  //   loadData();
+  // }, [formData.city]);
 
   const conditionalComponent = () => {
     switch (number) {
