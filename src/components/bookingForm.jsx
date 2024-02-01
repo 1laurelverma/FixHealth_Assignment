@@ -125,7 +125,7 @@ const BookingForm = () => {
     setIsParamData(false);
 
     if (paramValue) {
-      console.log(paramValue);
+      // console.log(paramValue);
       setFormData((prevState) => ({
         ...prevState,
         city: paramValue.toLowerCase(),
