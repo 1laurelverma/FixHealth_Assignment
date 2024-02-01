@@ -1,6 +1,9 @@
 # Deployed Link
 https://master--laurelfixhealthassignment.netlify.app/
 
+## Fetch param from url 
+https://laurelfixhealthassignment.netlify.app/?city=nagpur
+Enter city to fetch doctors for that city
 
 ## How to run the Project
 
