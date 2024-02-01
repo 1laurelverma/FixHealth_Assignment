@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+// import { useSearchParams } from "react-router-dom";
 // import axios from "axios";
 // import mockData from "./mockData";
 import "./bookingForm.css";
@@ -20,6 +21,7 @@ const BookingForm = () => {
   const [number, setNumber] = useState(0);
   const [doctorlist, setDoctorlist] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
+  const [isParamData, setIsParamData] = useState(false);
 
   const ValidateNext = () => {
     if (number === 0) {
@@ -117,9 +119,20 @@ const BookingForm = () => {
     // }, 20000);
   };
 
-  // useEffect(() => {
-  //   loadData();
-  // }, [formData.city]);
+  useEffect(() => {
+    const params = new URLSearchParams(window.location.search);
+    const paramValue = params.get("city");
+    setIsParamData(false);
+
+    if (paramValue) {
+      console.log(paramValue);
+      setFormData((prevState) => ({
+        ...prevState,
+        city: paramValue.toLowerCase(),
+      }));
+      setIsParamData(true);
+    }
+  }, []);
 
   const conditionalComponent = () => {
     switch (number) {
@@ -220,6 +233,7 @@ const BookingForm = () => {
                     placeholder="Delhi, Mumbai"
                     name="city"
                     value={formData.city}
+                    disabled={isParamData}
                     onChange={handleChange}
                   />
                 </div>

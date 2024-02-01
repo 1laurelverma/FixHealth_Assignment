@@ -1,17 +1,17 @@
 import "./App.css";
-import HeroSection from "./components/heroSection.jsx";
-import Testimonial from "./components/testimonial.jsx";
-import BookingForm from "./components/bookingForm.jsx";
-import NavBar from "./components/navBar.jsx";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import Home from "./pages/Home.jsx";
+import NotFound from "./pages/NotFound.jsx";
 
 function App() {
   return (
-    <div>
-      <NavBar />
-      <HeroSection />
-      <BookingForm />
-      <Testimonial />
-    </div>
+    <Router>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="*" element={<NotFound />} />
+        {/* <Route path="/:variableParam" element={<Home />} /> */}
+      </Routes>
+    </Router>
   );
 }
 
